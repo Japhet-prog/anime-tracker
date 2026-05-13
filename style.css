@@ -1,0 +1,481 @@
+/* Variables pour un style cohérent */
+:root {
+    --bg-color: #1a1a2e; /* Fond principal sombre */
+    --card-bg: #2d2d44; /* Fond des cartes/modales */
+    --primary-color: #bb86fc; /* Couleur d'accentuation (boutons, icônes) */
+    --text-color: #f0f0f0; /* Couleur du texte clair */
+    --secondary-text: #b0b0b0; /* Texte secondaire */
+    --border-radius: 12px;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    padding-bottom: 50px; /* Espace en bas pour le mobile */
+}
+
+/* --- En-tête et Actions --- */
+.header {
+    background-color: var(--card-bg);
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: var(--shadow);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header h1 {
+    font-size: 1.5em;
+}
+
+.actions {
+    display: flex;
+    gap: 10px;
+}
+
+.action-btn {
+    background-color: var(--primary-color);
+    color: var(--bg-color);
+    border: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.action-btn:hover {
+    background-color: #a06eef;
+}
+
+/* --- Section de Recherche --- */
+.search-section {
+    padding: 20px;
+    text-align: center;
+}
+
+#search-input {
+    width: 100%;
+    max-width: 500px;
+    padding: 12px 20px;
+    border: 2px solid var(--primary-color);
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    border-radius: 25px;
+    font-size: 1em;
+    outline: none;
+}
+
+/* --- Conteneur Principal --- */
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+
+/* --- Liste des Animes - Design Simplifié --- */
+.anime-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.anime-header {
+    background-color: var(--card-bg);
+    padding: 15px 20px;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+    border-left: 5px solid transparent;
+}
+
+.anime-header:hover {
+    background-color: #3a3a5a;
+    transform: translateX(5px);
+}
+
+.anime-header.finished {
+    border-left-color: var(--primary-color);
+}
+
+.anime-title {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.anime-badges {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.rating-badge {
+    background-color: #3f3f6e;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.8em;
+    font-weight: bold;
+}
+
+.rating-mauvais { background-color: #dc3545; }
+.rating-assez-bien { background-color: #ffc107; color: #000; }
+.rating-bien { background-color: #28a745; }
+.rating-excellent { background-color: #17a2b8; }
+
+.status-badge {
+    background-color: var(--primary-color);
+    color: var(--bg-color);
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.8em;
+    font-weight: bold;
+}
+
+.anime-details {
+    background-color: #24243b;
+    padding: 0;
+    border-radius: 0 0 var(--border-radius) var(--border-radius);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+}
+
+.anime-details.expanded {
+    max-height: 500px;
+    padding: 20px;
+}
+
+.anime-info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.anime-info-grid p {
+    font-size: 0.9em;
+    color: var(--secondary-text);
+}
+
+.anime-controls {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.control-btn {
+    background-color: #3f3f6e;
+    color: var(--text-color);
+    border: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.control-btn:hover {
+    background-color: #5a5a8f;
+}
+
+.edit-btn {
+    background-color: var(--primary-color);
+    color: var(--bg-color);
+}
+
+.edit-btn:hover {
+    background-color: #a06eef;
+}
+
+.delete-btn {
+    background-color: #dc3545;
+    color: white;
+}
+
+.delete-btn:hover {
+    background-color: #c82333;
+}
+
+/* --- Modales (Statistiques et Formulaire) --- */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 200;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8); /* Fond sombre semi-transparent */
+    padding-top: 60px;
+}
+
+.modal-content {
+    background-color: var(--card-bg);
+    margin: 5% auto;
+    padding: 30px;
+    border-radius: var(--border-radius);
+    max-width: 600px;
+    position: relative;
+    box-shadow: var(--shadow);
+}
+
+.modal-title {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    border-bottom: 2px solid #3f3f6e;
+    padding-bottom: 10px;
+}
+
+.close-btn {
+    color: var(--secondary-text);
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+/* --- Formulaire --- */
+#anime-form label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+    color: var(--secondary-text);
+}
+
+#anime-form input[type="text"],
+#anime-form input[type="number"],
+#anime-form input[type="url"],
+#anime-form select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #3f3f6e;
+    border-radius: 6px;
+    background-color: #24243b;
+    color: var(--text-color);
+    font-size: 1em;
+}
+
+#anime-form input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+.submit-btn {
+    width: 100%;
+    margin-top: 30px;
+    padding: 12px;
+    background-color: var(--primary-color);
+    color: var(--bg-color);
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1em;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.submit-btn:hover {
+    background-color: #a06eef;
+}
+
+/* --- Saisons --- */
+.seasons-section {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #24243b;
+    border-radius: 8px;
+}
+
+#seasons-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 10px;
+}
+
+.season-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #3f3f6e;
+    border-radius: 6px;
+}
+
+.season-item input {
+    margin-right: 10px;
+    flex-grow: 1;
+}
+
+.season-item button {
+    background: none;
+    border: none;
+    color: #ff6b6b;
+    cursor: pointer;
+    font-size: 1.1em;
+}
+
+.add-season-btn {
+    background-color: #3f3f6e;
+    color: var(--text-color);
+    border: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.total-episodes-info {
+    margin-top: 15px;
+    font-style: italic;
+    color: var(--secondary-text);
+}
+
+/* --- Statistiques (Inspiré du visuel de l'image 1) --- */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.stat-card {
+    background-color: #3f3f6e;
+    padding: 20px;
+    border-radius: var(--border-radius);
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.stat-icon {
+    font-size: 2em;
+    color: var(--primary-color);
+    margin-bottom: 5px;
+}
+
+.stat-label {
+    font-size: 0.8em;
+    color: var(--secondary-text);
+    margin-bottom: 5px;
+}
+
+.stat-value {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+.settings-card {
+    padding: 15px;
+    background-color: #24243b;
+    border-radius: 8px;
+}
+
+.settings-card label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--secondary-text);
+}
+
+.settings-card input {
+    width: 100%;
+    max-width: 150px;
+    padding: 8px;
+    border: 1px solid #3f3f6e;
+    border-radius: 6px;
+    background-color: #2d2d44;
+    color: var(--text-color);
+}
+
+/* --- Media Queries pour la Responsivité --- */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        gap: 10px;
+        padding: 15px 10px;
+    }
+
+    .header h1 {
+        font-size: 1.3em;
+    }
+
+    .actions {
+        width: 100%;
+        justify-content: space-around;
+    }
+
+    .action-btn {
+        flex-grow: 1;
+        font-size: 0.9em;
+    }
+
+    .container {
+        padding: 0 10px;
+    }
+
+    .anime-header {
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-start;
+    }
+
+    .anime-badges {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .anime-controls {
+        justify-content: center;
+    }
+
+    .control-btn {
+        flex: 1;
+        min-width: 120px;
+    }
+}
+
+/* Pour les petits écrans de téléphone */
+@media (max-width: 480px) {
+    .anime-info-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .anime-controls {
+        flex-direction: column;
+    }
+    
+    .control-btn {
+        width: 100%;
+    }
+}
+.reset-btn {
+    background-color: #dc3545;
+}
+
+.reset-btn:hover {
+    background-color: #c82333;
+}

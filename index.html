@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Suivi d'Animes</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <header class="header">
+        <h1>AnimeListe</h1>
+        <div class="actions">
+            <button id="add-anime-btn" class="action-btn"><i class="fas fa-plus"></i> Ajouter un Anime</button>
+            <button id="stats-btn" class="action-btn"><i class="fas fa-chart-bar"></i> Statistiques</button>
+            <button id="reset-btn" class="action-btn reset-btn"><i class="fas fa-trash"></i> Reset Complet</button>
+        </div>
+    </header>
+
+    <section class="search-section">
+        <input type="text" id="search-input" placeholder="Rechercher un anime...">
+    </section>
+
+    <main class="container">
+        <ul id="anime-list" class="anime-list">
+            <!-- Les animes seront ajoutés ici dynamiquement -->
+        </ul>
+    </main>
+
+    <div id="stats-modal" class="modal">
+        <div class="modal-content stats-content">
+            <span class="close-btn">&times;</span>
+            <h2 class="modal-title">Statistiques 📈</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <i class="fas fa-book-reader stat-icon"></i>
+                    <p class="stat-label">Dans la bibliothèque</p>
+                    <p id="total-animes-stat" class="stat-value">0</p>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-list-ol stat-icon"></i>
+                    <p class="stat-label">Épisodes vus</p>
+                    <p id="total-episodes-stat" class="stat-value">0</p>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-check-circle stat-icon"></i>
+                    <p class="stat-label">Séries terminées</p>
+                    <p id="finished-animes-stat" class="stat-value">0</p>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-clock stat-icon"></i>
+                    <p class="stat-label">Durée de visionnage</p>
+                    <p id="total-hours-stat" class="stat-value">0 h</p>
+                </div>
+            </div>
+
+            <div class="settings-card">
+                <h3>Paramètres de Calcul ⚙️</h3>
+                <label for="episode-duration">Durée moyenne d'un épisode (en minutes) :</label>
+                <input type="number" id="episode-duration" value="24" min="1">
+            </div>
+        </div>
+    </div>
+
+    <div id="anime-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2 id="modal-title" class="modal-title">Ajouter un Anime</h2>
+            <form id="anime-form">
+                <input type="hidden" id="anime-id">
+                
+                <label for="anime-name">Nom de l'Anime:</label>
+                <input type="text" id="anime-name" required>
+
+                <label for="episodes-watched">Épisodes vus:</label>
+                <input type="number" id="episodes-watched" value="0" min="0" required>
+                
+                <label for="is-finished">Terminé:</label>
+                <input type="checkbox" id="is-finished">
+
+                <label for="anime-rating">Note:</label>
+                <select id="anime-rating">
+                    <option value="Non noté">Non noté</option>
+                    <option value="Mauvais">Mauvais</option>
+                    <option value="Assez Bien">Assez Bien</option>
+                    <option value="Bien">Bien</option>
+                    <option value="Excellent">Excellent</option>
+                </select>
+
+                <div class="seasons-section">
+                    <h3>Saisons <i class="fas fa-film"></i></h3>
+                    <ul id="seasons-list">
+                        <!-- Les saisons seront ajoutées ici dynamiquement -->
+                    </ul>
+                    <button type="button" id="add-season-btn" class="add-season-btn"><i class="fas fa-plus"></i> Ajouter une saison</button>
+                    <p class="total-episodes-info">Total des épisodes de l'anime (via saisons) : <span id="total-episodes-count">0</span></p>
+                </div>
+
+                <button type="submit" class="submit-btn" id="submit-anime-btn">Enregistrer l'Anime</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
